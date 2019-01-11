@@ -30,6 +30,7 @@ function initializeApp(){
     addClickHandlersToElements();
     // activate load function on load?
     serverClick();
+    getRandomNumber();
  }
  /***************************************************************************************************
  * addClickHandlerstoElements
@@ -232,3 +233,18 @@ function renderGradeAverage(average){
     }
     $.ajax(ajax);
 } 
+
+function getRandomNumber(){
+    $.ajax({
+        url: "index.php",
+        dataType: "json",
+        data: {
+            number:[]
+        }
+    }).then(function(response){
+        if(response.success){
+            randomNumber = response.number;
+            console.log("random num", randomNumber)
+        }
+    })
+}
